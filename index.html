@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For my love 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#3d0f20;--wine2:#5a1730;--rose:#d4476f;--blush:#fbdde2;--paper:#fff6f4;--gold:#e2ad6c;--ink:#3a1220}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;background:radial-gradient(120% 80% at 50% 0%,var(--wine2),var(--wine));color:var(--paper);font-family:"Cormorant Garamond",Georgia,serif;display:flex;flex-direction:column;align-items:center;padding:32px 16px 64px}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* ticket */
+#ticketWrap{width:min(92vw,400px);margin-top:6vh;transition:opacity .6s ease,transform .6s ease}
+#ticketWrap.gone{opacity:0;transform:translateY(-20px)}
+.ticket{all:unset;display:block;width:100%;cursor:pointer;position:relative}
+.ticket:focus-visible{outline:3px solid var(--gold);outline-offset:6px;border-radius:18px}
+.main{background:var(--blush);color:var(--ink);border-radius:18px 18px 0 0;padding:36px 28px 28px;text-align:center}
+.main h1{font-size:2.3rem;line-height:1.1;margin:0 0 12px;font-weight:600;color:var(--wine)}
+.main p{margin:0;font-size:1.2rem;font-style:italic}
+.hint{display:block;margin-top:18px;font-size:1rem;color:var(--rose);font-weight:600}
+.stub{background:var(--blush);color:var(--wine);border-radius:0 0 18px 18px;border-top:2px dashed var(--rose);padding:18px 28px;text-align:center;font-size:1.25rem;font-weight:600;transform-origin:0 0;position:relative}
+.stub::before,.stub::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--wine2)}
+.stub::before{left:-10px}.stub::after{right:-10px}
+.torn .stub{animation:tear 1s ease-in forwards}
+.torn .main{animation:shake .4s ease}
+@keyframes tear{0%{transform:rotate(0)}30%{transform:rotate(-8deg)}100%{transform:rotate(40deg) translate(60px,260px);opacity:0}}
+@keyframes shake{0%,100%{transform:none}30%{transform:translateY(-3px)}60%{transform:translateY(2px)}}
+
+/* letter */
+#letter{display:none;width:min(94vw,560px);margin-top:4vh}
+#letter.show{display:block;animation:rise .9s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.paper{background:var(--paper);color:var(--ink);border-radius:6px;padding:36px 28px 32px;box-shadow:0 18px 50px rgba(0,0,0,.35);font-size:1.3rem;line-height:1.7}
+.paper .hi{font-family:Caveat,"Segoe Script",cursive;font-size:2.4rem;color:var(--rose);margin:0 0 10px;line-height:1.1}
+.paper p{margin:0 0 16px}
+.paper .pull{font-size:1.55rem;font-style:italic;color:var(--wine);border-left:3px solid var(--rose);padding-left:16px;margin:24px 0}
+.sign{font-family:Caveat,"Segoe Script",cursive;font-size:2rem;color:var(--rose);margin:22px 0 0;text-align:right}
+
+/* hearts */
+.love{text-align:center;margin-top:36px}
+#heartBtn{background:var(--rose);color:#fff;border:0;border-radius:999px;padding:14px 28px;font-size:1.3rem;font-weight:600;transition:transform .15s ease,background .2s}
+#heartBtn:active{transform:scale(.94)}
+#heartBtn:disabled{background:var(--wine2);cursor:default}
+#msg{min-height:3.4em;margin:18px auto 0;max-width:30rem;font-size:1.35rem;font-style:italic;color:var(--blush)}
+.fl{position:fixed;pointer-events:none;font-size:1.8rem;animation:fly 1.6s ease-out forwards;z-index:9}
+@keyframes fly{to{transform:translate(var(--dx),-240px) scale(1.4);opacity:0}}
+#ticketWrap,#letter{position:relative;z-index:1}
+
+/* slide 1: ticket */
+#ticket{animation:float 4s ease-in-out infinite}
+.torn #ticket{animation:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+.main{position:relative;overflow:hidden}
+.main::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:shine 3.6s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-60%}100%{left:130%}}
+.hint{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+.main h1{animation:rise .9s ease both}
+.main p{animation:rise .9s .3s ease both}
+
+/* slide 2: letter */
+.show .paper>*{opacity:0;animation:rise .8s ease forwards}
+.show .paper>:nth-child(1){animation-delay:.4s}
+.show .paper>:nth-child(2){animation-delay:.9s}
+.show .paper>:nth-child(3){animation-delay:1.5s}
+.show .paper>:nth-child(4){animation-delay:2.1s}
+.show .paper>:nth-child(5){animation-delay:2.8s}
+.show .paper>:nth-child(6){animation-delay:3.5s}
+.show .paper>:nth-child(7){animation-delay:4.2s}
+.show .paper>:nth-child(8){animation-delay:4.9s}
+.show .paper>:nth-child(9){animation-delay:5.5s}
+.show .love{opacity:0;animation:rise .8s 6.1s ease forwards}
+.pull{position:relative}
+.sign{display:block}
+.show .sign span{display:inline-block;animation:beat 1.4s 6.2s ease-in-out infinite}
+#heartBtn:not(:disabled){animation:beat 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
+
+/* drifting hearts behind both slides */
+.bg{position:fixed;bottom:-40px;z-index:0;pointer-events:none;opacity:.22;animation:drift linear infinite}
+@keyframes drift{from{transform:translateY(0) rotate(0)}to{transform:translateY(-115vh) rotate(25deg)}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.torn .stub{opacity:0}.show .paper>*,.show .love{opacity:1!important}.bg{display:none}}
+</style>
+</head>
+<body>
+
+<div id="ticketWrap">
+  <button class="ticket" id="ticket" aria-label="Tap to tear open your surprise">
+    <div class="main">
+      <h1>Thank you for coming to me 🥹</h1>
+      <p>One weekend, one heart, all yours 💕</p>
+      <span class="hint">tap to tear open 🎟️</span>
+    </div>
+    <div class="stub">admit one · forever ♾️</div>
+  </button>
+</div>
+
+<section id="letter" aria-live="polite">
+  <div class="paper">
+    <p class="hi">My love 💕,</p>
+    <p>Thank you for making time for me, baby. Coming to see me and giving me your time and your whole heart this weekend meant more than words can say, and I felt every bit of that love. 🥹</p>
+    <p>Every laugh, every hug and every quiet moment beside you felt like home. You make me feel chosen, safe and so deeply loved, handsome. 💖</p>
+    <p class="pull">You are loved. Today, tomorrow, and on the hard days too. That never changes. ♾️</p>
+    <p class="pull">And the memories we make, my love, shall forever have a place in my heart. 💞</p>
+    <p>And baby, every bit of hard work and effort you put in will bear fruit. It is my joy to watch you win and make it, and I will always be right here to support you and lend a hand whenever you need one. 🌱💪</p>
+    <p>Always put God first, my love. Keep Him at the center of everything you do and He will direct every step you take. 🙏✨</p>
+    <p>Until I see you again, my king, keep me in your heart. I'm holding you in mine, always. 🤍</p>
+    <p class="sign">Forever yours, wifeyy <span>💋</span></p>
+  </div>
+
+  <div class="love">
+    <button id="heartBtn">tap if you feel it 🥰</button>
+    <p id="msg"></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var e=['💖','💕','💗','🤍','💞'];
+  for(var i=0;i<14;i++){
+    var s=document.createElement('span');
+    s.className='bg';
+    s.textContent=e[i%e.length];
+    s.style.left=(Math.random()*96)+'vw';
+    s.style.fontSize=(16+Math.random()*22)+'px';
+    s.style.animationDuration=(12+Math.random()*12)+'s';
+    s.style.animationDelay=(-Math.random()*20)+'s';
+    document.body.appendChild(s);
+  }
+})();
+var ticket=document.getElementById('ticket'),wrap=document.getElementById('ticketWrap'),letter=document.getElementById('letter');
+ticket.addEventListener('click',function(){
+  if(wrap.classList.contains('torn'))return;
+  wrap.classList.add('torn');
+  setTimeout(function(){wrap.classList.add('gone')},900);
+  setTimeout(function(){
+    wrap.style.display='none';
+    letter.classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },1500);
+});
+
+var lines=[
+  "I love you 💕",
+  "I'm so proud to be yours 🥰",
+  "You're my favorite person, baby 💖",
+  "Thank you for choosing me 🥹",
+  "My heart is so safe with you 🤍",
+  "I'd choose you again and again 💞",
+  "Okay, that's all the taps… but my love for you has no limit. Always, my love ♾️💋."
+];
+var n=0,btn=document.getElementById('heartBtn'),msg=document.getElementById('msg');
+var emojis=['💖','💕','💗','💘','🤍','💞'];
+btn.addEventListener('click',function(){
+  if(n>=lines.length)return;
+  msg.textContent=lines[n];
+  var r=btn.getBoundingClientRect();
+  for(var i=0;i<6;i++){
+    var s=document.createElement('span');
+    s.className='fl';
+    s.textContent=emojis[(n+i)%emojis.length];
+    s.style.left=(r.left+r.width/2-14+(Math.random()*60-30))+'px';
+    s.style.top=(r.top-6)+'px';
+    s.style.setProperty('--dx',(Math.random()*120-60)+'px');
+    s.style.animationDelay=(i*80)+'ms';
+    s.addEventListener('animationend',function(){this.remove()});
+    document.body.appendChild(s);
+  }
+  n++;
+  if(n>=lines.length){btn.disabled=true;btn.textContent='💖 forever 💖'}
+  else btn.textContent='again 🥰 ('+n+'/'+lines.length+')';
+});
+</script>
+</body>
+</html>
